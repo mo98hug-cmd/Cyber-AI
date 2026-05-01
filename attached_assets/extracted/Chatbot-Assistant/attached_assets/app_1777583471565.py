@@ -21,7 +21,10 @@ app.config["SESSION_FILE_DIR"] = "./flask_session/"
 Session(app)
 
 # --- إعدادات Gemini API ---
-genai.configure(api_key="YOUR_GEMINI_API_KEY") # استبدله بمفتاحك الحقيقي
+# التعديل هنا: سحب المفتاح من Secrets ريبليت بدلاً من كتابته يدوياً
+api_key_from_secrets = os.environ.get('GOOGLE_API_KEY') 
+
+genai.configure(api_key=api_key_from_secrets) 
 model_gemini = genai.GenerativeModel('gemini-pro')
 
 # --- تحميل ملفات النموذج المحلي ---
