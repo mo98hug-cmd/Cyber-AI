@@ -51,10 +51,11 @@ router.get("/gemini/conversations", async (req, res) => {
   }
 });
 
-router.post("/gemini/conversations", async (req, res) => {
+router.post("/gemini/conversations", async (req, res): Promise<void> => {
   const parsed = CreateGeminiConversationBody.safeParse(req.body);
   if (!parsed.success) {
-    return res.status(400).json({ error: "Invalid request body" });
+    res.status(400).json({ error: "Invalid request body" });
+    return;
   }
   try {
     const [conversation] = await db
@@ -68,12 +69,13 @@ router.post("/gemini/conversations", async (req, res) => {
   }
 });
 
-router.get("/gemini/conversations/:id", async (req, res) => {
+router.get("/gemini/conversations/:id", async (req, res): Promise<void> => {
   const parsed = GetGeminiConversationParams.safeParse({
     id: Number(req.params.id),
   });
   if (!parsed.success) {
-    return res.status(400).json({ error: "Invalid id" });
+    res.status(400).json({ error: "Invalid id" });
+    return;
   }
   try {
     const [conversation] = await db
@@ -81,7 +83,8 @@ router.get("/gemini/conversations/:id", async (req, res) => {
       .from(conversations)
       .where(eq(conversations.id, parsed.data.id));
     if (!conversation) {
-      return res.status(404).json({ error: "Conversation not found" });
+      res.status(404).json({ error: "Conversation not found" });
+      return;
     }
     const msgs = await db
       .select()
@@ -95,12 +98,13 @@ router.get("/gemini/conversations/:id", async (req, res) => {
   }
 });
 
-router.delete("/gemini/conversations/:id", async (req, res) => {
+router.delete("/gemini/conversations/:id", async (req, res): Promise<void> => {
   const parsed = DeleteGeminiConversationParams.safeParse({
     id: Number(req.params.id),
   });
   if (!parsed.success) {
-    return res.status(400).json({ error: "Invalid id" });
+    res.status(400).json({ error: "Invalid id" });
+    return;
   }
   try {
     const deleted = await db
@@ -108,7 +112,8 @@ router.delete("/gemini/conversations/:id", async (req, res) => {
       .where(eq(conversations.id, parsed.data.id))
       .returning();
     if (deleted.length === 0) {
-      return res.status(404).json({ error: "Conversation not found" });
+      res.status(404).json({ error: "Conversation not found" });
+      return;
     }
     res.status(204).send();
   } catch (err) {
@@ -117,12 +122,13 @@ router.delete("/gemini/conversations/:id", async (req, res) => {
   }
 });
 
-router.get("/gemini/conversations/:id/messages", async (req, res) => {
+router.get("/gemini/conversations/:id/messages", async (req, res): Promise<void> => {
   const parsed = ListGeminiMessagesParams.safeParse({
     id: Number(req.params.id),
   });
   if (!parsed.success) {
-    return res.status(400).json({ error: "Invalid id" });
+    res.status(400).json({ error: "Invalid id" });
+    return;
   }
   try {
     const msgs = await db
@@ -137,13 +143,14 @@ router.get("/gemini/conversations/:id/messages", async (req, res) => {
   }
 });
 
-router.post("/gemini/conversations/:id/messages", async (req, res) => {
+router.post("/gemini/conversations/:id/messages", async (req, res): Promise<void> => {
   const paramsParsed = SendGeminiMessageParams.safeParse({
     id: Number(req.params.id),
   });
   const bodyParsed = SendGeminiMessageBody.safeParse(req.body);
   if (!paramsParsed.success || !bodyParsed.success) {
-    return res.status(400).json({ error: "Invalid request" });
+    res.status(400).json({ error: "Invalid request" });
+    return;
   }
 
   const conversationId = paramsParsed.data.id;
@@ -155,7 +162,8 @@ router.post("/gemini/conversations/:id/messages", async (req, res) => {
       .from(conversations)
       .where(eq(conversations.id, conversationId));
     if (!conversation) {
-      return res.status(404).json({ error: "Conversation not found" });
+      res.status(404).json({ error: "Conversation not found" });
+      return;
     }
 
     await db.insert(messages).values({
