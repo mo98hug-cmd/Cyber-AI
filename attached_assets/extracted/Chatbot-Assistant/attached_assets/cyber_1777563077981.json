@@ -1,0 +1,1026 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hi",
+        "How are you",
+        "Is anyone there?",
+        "Hello",
+        "Good day",
+        "Hey",
+        "Hi there"
+      ],
+      "responses": [
+        "Hello! Welcome to the Secure Coding Guide. How can I help you today?",
+        "Hi there! Ready to learn how to protect your code?",
+        "Greetings! What security topic should we discuss today?"
+      ]
+    },
+
+  
+    {
+      "tag": "secure coding why",
+      "patterns": [
+        "Why should I write secure code?",
+        "Importance of secure coding",
+        "Why secure coding matters",
+        "Benefits of secure programming"
+      ],
+      "responses": [
+       "It ensures compliance with international security standards like OWASP and ISO.",
+       "Secure coding minimizes the attack surface of your application by design.",
+       "It protects your company's reputation and prevents legal issues caused by data leaks.",
+       "Implementing security early in the development lifecycle (Shift Left) is much cheaper than fixing bugs after deployment.",
+       "It helps in preventing common threats like Broken Access Control and Sensitive Data Exposure."
+      ]
+    },
+    {
+
+  "tag": "sql_injection",
+  "patterns": [
+    "What is SQL Injection?",
+    "How to prevent SQL injection",
+    "SQLi prevention",
+    "Protect database from SQLi",
+    "Explain SQL injection",
+    "How does SQLi work?"
+  ],
+  "responses": [
+    "To prevent SQL Injection, always use Prepared Statements and Parameterized Queries instead of concatenating strings.",
+    "Never trust user input; use ORMs or secure database libraries to block SQLi attacks.",
+    "SQL Injection occurs when an attacker inserts malicious SQL code into a query, tricking the database into executing unintended commands.",
+    "Always implement the 'Principle of Least Privilege' for your database users to limit the potential damage of an attack.",
+    "Use Input Validation to ensure that the data entered by the user matches the expected format before it is processed.",
+    "Modern ORMs like SQLAlchemy or Sequelize provide built-in protection against SQLi by automatically parameterizing queries."
+  ]
+},
+{
+
+  "tag": "xss_protection",
+  "patterns": [
+    "How to prevent XSS?",
+    "What is Cross-Site Scripting?",
+    "XSS protection tips",
+    "Explain XSS",
+    "Types of XSS",
+    "What can an attacker do with XSS?"
+  ],
+  "responses": [
+    "To prevent XSS, you must always perform Output Encoding and Input Validation for all user-provided data.",
+    "Sanitize all inputs before rendering them in the browser to block malicious scripts.",
+    "XSS occurs when an attacker injects malicious scripts into web pages to steal cookies or sensitive user data.",
+    "Use a Content Security Policy (CSP) as a powerful defense layer to control which scripts are allowed to execute in your web application.",
+    "Stored XSS is especially dangerous because the malicious script is saved on the server and served to every user who visits the page.",
+    "Always set the 'HttpOnly' flag on sensitive cookies so they cannot be accessed by malicious scripts even if an XSS vulnerability exists."
+  ]
+},
+
+{
+  "tag": "injection_general",
+  "patterns": [
+    "What is Injection attack?",
+    "Types of injection",
+    "Command Injection",
+    "How to prevent injection vulnerabilities?",
+    "Explain injection in cyber security"
+  ],
+  "responses": [
+    "Injection vulnerabilities occur when untrusted data is sent to an interpreter as part of a command or query.",
+    "The most common types are SQL Injection, Command Injection, LDAP Injection, and Cross-Site Scripting (XSS).",
+    "To prevent injection, you must always separate data from commands. Use safe APIs, parameterized queries, and validate all inputs.",
+    "In Command Injection, an attacker tries to execute arbitrary operating system (OS) commands via a vulnerable application.",
+    "The golden rule to stop Injection: Never trust user input. Always sanitize and use allow-lists for expected values."
+  ]
+},
+
+{
+  "tag": "ctf_explanation",
+  "patterns": [
+    "What is CTF?",
+    "How to start in CTF?",
+    "Capture The Flag",
+    "Best websites for CTF",
+    "Explain CTF for beginners",
+    "How to practice hacking safely?"
+  ],
+  "responses": [
+    "CTF (Capture The Flag) is a cybersecurity competition where participants solve technical challenges to find a hidden string called a 'Flag'.",
+    "CTFs cover various fields like Web Hacking, Reverse Engineering, Cryptography, and Forensics.",
+    "To start, I recommend websites like 'picoCTF' for absolute beginners and 'Hack The Box' or 'TryHackMe' for more advanced practice.",
+    "Practicing CTFs is the best way to understand how attackers think, which helps you write more secure code in your projects.",
+    "There are two main types of CTF: Jeopardy-style (solving tasks) and Attack-Defense (protecting your server while attacking others).",
+    "Join platforms like CTFtime.org to keep track of global competitions and join a team to learn faster."
+  ]
+},
+
+{
+  "tag": "trust_and_validation",
+  "patterns": [
+    "What is the golden rule of security?",
+    "Should I trust user input?",
+    "Zero trust policy in coding",
+    "How to handle untrusted data?",
+    "The concept of trust in cyber security",
+    "Never trust user input"
+  ],
+  "responses": [
+    "The golden rule of cybersecurity is: 'Never Trust, Always Verify'. Treat every piece of data coming from a user as potentially malicious.",
+    "Zero Trust means that your application should not automatically trust anything inside or outside its perimeters; it must verify everything before granting access.",
+    "Trusting user input blindly is the root cause of vulnerabilities like SQL Injection and XSS. Always validate, sanitize, and filter data.",
+    "Instead of trusting data, use 'Allow-lists' to define exactly what is permitted (e.g., only letters, only numbers, or a specific length).",
+    "Security starts by assuming the user might be an attacker. By removing 'trust' from the equation, you build much more resilient systems."
+  ]
+},
+
+
+{
+  "tag": "csrf_protection",
+  "patterns": [
+    "What is CSRF?",
+    "Cross Site Request Forgery",
+    "How to prevent CSRF attacks?",
+    "Explain CSRF for beginners",
+    "CSRF vs XSS",
+    "What is a CSRF token?"
+  ],
+  "responses": [
+    "CSRF (Cross-Site Request Forgery) is an attack that forces an authenticated user to execute unwanted actions on a web application they are currently logged into.",
+    "Unlike XSS, which aims to steal data, CSRF aims to perform state-changing requests like changing passwords or transferring funds without the user's consent.",
+    "The best defense against CSRF is using 'Anti-CSRF Tokens'—unique, secret, and unpredictable values generated by the server for each user session.",
+    "Always use the 'SameSite' cookie attribute (Strict or Lax) to prevent the browser from sending cookies with cross-site requests.",
+    "For sensitive actions, require an additional layer of security like re-authentication (entering the password again) or a Captcha.",
+    "A successful CSRF attack targets functionality that causes a state change on the server, such as updating profile details or deleting data."
+  ]
+},
+
+{
+  "tag": "api_security",
+  "patterns": [
+    "What is API Security?",
+    "How to secure an API?",
+    "What is OAuth2 or JWT?",
+    "API vulnerabilities",
+    "How to protect REST API?",
+    "Rate limiting and Throttling"
+  ],
+  "responses": [
+    "API Security focuses on protecting the application programming interfaces (APIs) from attacks and unauthorized access.",
+    "Always use Token-based authentication like JWT (JSON Web Tokens) or OAuth2 to ensure that only authorized users can access your endpoints.",
+    "Implement 'Rate Limiting' to prevent DoS attacks and brute-force attempts by limiting the number of requests a user can make in a certain time.",
+    "Always use HTTPS to encrypt data in transit between the client and the API server to prevent Man-in-the-Middle (MITM) attacks.",
+    "Validate and Sanitize all input data at the API level, even if you already did it on the frontend. Never trust the client!",
+    "Avoid exposing sensitive data in API responses. Only return the fields that are absolutely necessary for the frontend to display."
+  ]
+},
+
+{
+  "tag": "security_auditing",
+  "patterns": [
+    "What is Security Auditing?",
+    "How to audit code for security?",
+    "Difference between SAST and DAST",
+    "Security review process",
+    "Manual code review",
+    "How to find vulnerabilities in my app?"
+  ],
+  "responses": [
+    "Security Auditing is a systematic evaluation of an application's security to ensure it meets safety standards and follows best practices.",
+    "Auditing involves two main methods: SAST (Static Analysis), which scans the source code, and DAST (Dynamic Analysis), which tests the app while it is running.",
+    "A manual code review is a critical part of auditing, where developers look for logic flaws that automated tools might miss.",
+    "Regular auditing helps identify vulnerabilities early in the development lifecycle, reducing the risk of a data breach.",
+    "To perform a good audit, use the OWASP Testing Guide as a checklist to cover everything from authentication to data encryption.",
+    "Security auditing is not a one-time task; it should be part of your Continuous Integration (CI/CD) pipeline to ensure every update is safe."
+  ]
+},
+
+{
+  "tag": "bcrypt_hashing",
+  "patterns": [
+    "What is BCrypt?",
+    "How to store passwords safely?",
+    "Explain hashing vs encryption",
+    "What is Salt in password hashing?",
+    "How to use BCrypt in Python?",
+    "Why is BCrypt secure?"
+  ],
+  "responses": [
+    "BCrypt is a password hashing function designed to be slow and secure, making it extremely difficult for attackers to crack passwords using brute force.",
+    "Unlike encryption, hashing is a one-way process. You cannot 'decrypt' a BCrypt hash back into the original password.",
+    "BCrypt automatically handles 'Salting'—adding random data to each password before hashing—which prevents attackers from using Rainbow Tables to find matches.",
+    "The 'Work Factor' or 'Cost' in BCrypt allows you to increase the time it takes to hash a password, staying ahead of faster computer hardware.",
+    "In Python, you can use the 'bcrypt' library to hash passwords with: bcrypt.hashpw(password, bcrypt.gensalt()).",
+    "Never use MD5 or SHA1 for passwords! Always use BCrypt, Argon2, or Scrypt for modern and secure password storage."
+  ]
+},
+
+{
+  "tag": "database_security",
+  "patterns": [
+    "How to secure my database?",
+    "Database security best practices",
+    "What is database encryption?",
+    "How to protect user data in DB?",
+    "Database access control",
+    "Securing SQL databases"
+  ],
+  "responses": [
+    "Database security involves protecting the database software, the data it holds, and the network it sits on from unauthorized access.",
+    "Always use the 'Principle of Least Privilege': The database user for your app should only have permission to SELECT, INSERT, and UPDATE, never to DROP or ALTER tables.",
+    "Encrypt sensitive data 'at rest' (in the DB) and 'in transit' (using TLS/SSL). Even if an attacker steals the database file, they won't be able to read the data.",
+    "Disable all unnecessary features and services on your database server to reduce the attack surface.",
+    "Never use the 'root' or 'admin' account for your web application's daily database operations.",
+    "Enable database logging and auditing to track who accessed what data and when, which helps in identifying suspicious activities early."
+  ]
+},
+
+{
+  "tag": "security_management",
+  "patterns": [
+    "What is Identity and Access Management?",
+    "How to manage user permissions?",
+    "What is IAM?",
+    "Secrets management",
+    "How to store API keys safely?",
+    "Role Based Access Control (RBAC)"
+  ],
+  "responses": [
+    "Security Management involves defining and managing the roles and access privileges of individual network users.",
+    "Use Role-Based Access Control (RBAC) to assign permissions to roles (like Admin, Editor, Viewer) rather than to individual users.",
+    "Secrets Management is crucial: Never hardcode API keys or database passwords in your source code. Use Environment Variables or tools like HashiCorp Vault.",
+    "Implement Multi-Factor Authentication (MFA) to add an extra layer of security beyond just passwords.",
+    "Regularly perform User Access Reviews to ensure that people only have the access they currently need for their jobs (Least Privilege).",
+    "A centralized Management system helps in tracking user activities and revoking access instantly if a security breach is suspected."
+  ]
+},
+
+{
+  "tag": "least_privilege",
+  "patterns": [
+    "What is PoLP?",
+    "Explain Principle of Least Privilege",
+    "How to limit user permissions?",
+    "Why is PoLP important in security?",
+    "Best practices for access control"
+  ],
+  "responses": [
+    "The Principle of Least Privilege (PoLP) means giving a user, account, or process only the minimum permissions necessary to perform its intended function.",
+    "PoLP is critical because it limits the 'attack surface'. If an account is compromised, the attacker can only do what that specific account was allowed to do.",
+    "In web development, your database user should only have SELECT/INSERT permissions, not DROP or DELETE, unless absolutely necessary.",
+    "Applying PoLP helps prevent 'Privilege Escalation' and protects sensitive data from being accessed by unauthorized users.",
+    "Regularly audit your system to revoke unnecessary permissions. If someone doesn't need access to the admin panel, they shouldn't have it."
+  ]
+},
+
+{
+  "tag": "sdlc_phases",
+  "patterns": [
+    "What is SDLC?",
+    "Software Development Life Cycle phases",
+    "Secure SDLC vs SDLC",
+    "Steps of software development",
+    "How to build secure software from scratch?",
+    "Design and Planning phase"
+  ],
+  "responses": [
+    "SDLC (Software Development Life Cycle) is a process used by software industry to design, develop, and test high-quality softwares.",
+    "The main phases of SDLC are: Planning, Analysis, Design, Implementation (Coding), Testing, Deployment, and Maintenance.",
+    "In a Secure SDLC, we add security at every stage: Risk Assessment during planning, Threat Modeling during design, and Static Analysis during coding.",
+    "The 'Shift Left' approach in SDLC means moving security testing to the earliest possible point in the development process to save time and costs.",
+    "The Testing phase is where we perform DAST and Penetration Testing to ensure the application is resilient against real-world attacks.",
+    "Maintenance is the final phase where we monitor the app for new vulnerabilities and apply security patches regularly."
+  ]
+},
+{
+  "tag": "security_general",
+  "patterns": [
+    "What is Cybersecurity?",
+    "Define security",
+    "Security domains",
+    "Difference between Information Security and Cybersecurity",
+    "How to become a security professional?",
+    "Security roadmap"
+  ],
+  "responses": [
+    "Cybersecurity is the practice of protecting systems, networks, and programs from digital attacks.",
+    "Security is built on the CIA Triad: Confidentiality, Integrity, and Availability. Every security measure aims to protect one of these three pillars.",
+    "The main domains of security include Network Security, Application Security (AppSec), Cloud Security, and Incident Response.",
+    "Information Security (InfoSec) is the broad category of protecting data in any form, while Cybersecurity specifically focuses on protecting digital data and systems.",
+    "To start in security, you should learn the basics of Networking, Linux, and at least one programming language like Python, then move into specialized fields like Penetration Testing or Security Auditing.",
+    "Security is a continuous process, not a final product. It requires constant monitoring, patching, and learning about new threats."
+  ]
+},
+
+{
+  "tag": "mfa_auth",
+  "patterns": [
+    "What is MFA?",
+    "Explain Two-Factor Authentication",
+    "How to secure login process?",
+    "Is password enough?",
+    "Benefits of 2FA"
+  ],
+  "responses": [
+    "MFA (Multi-Factor Authentication) is a security system that requires more than one method of authentication to verify the user's identity.",
+    "Common MFA methods include SMS codes, Authenticator apps (like Google Authenticator), and Biometrics (Fingerprint or FaceID).",
+    "Even if an attacker steals your password, they cannot access your account without the second factor, significantly reducing the risk of identity theft.",
+    "We highly recommend implementing MFA for all administrative and sensitive user accounts in your application."
+  ]
+},
+
+{
+  "tag": "social_engineering",
+  "patterns": [
+    "What is Social Engineering?",
+    "Human hacking",
+    "Phishing attacks",
+    "How to prevent phishing?",
+    "Psychological manipulation in security"
+  ],
+  "responses": [
+    "Social Engineering is the art of manipulating people into giving up confidential information like passwords or bank details.",
+    "The most common type is 'Phishing', where attackers send fake emails or messages that look like they are from a trusted source.",
+    "Always check the sender's email address and never click on suspicious links or download attachments from unknown sources.",
+    "Security is not just about code; it's about people. Education and awareness are your best defenses against social engineering."
+  ]
+},
+
+{
+  "tag": "incident_response",
+  "patterns": [
+    "What to do if hacked?",
+    "Incident response plan",
+    "How to handle a data breach?",
+    "Steps after security incident"
+  ],
+  "responses": [
+    "Incident Response is the process of managing a security breach. The goal is to limit damage and reduce recovery time and costs.",
+    "The main steps are: Preparation, Identification, Containment, Eradication, Recovery, and Lessons Learned.",
+    "If you detect an attack, first 'Contain' it by isolating the affected systems to prevent the threat from spreading.",
+    "After recovering, always perform a 'Post-Mortem' analysis to understand how the breach happened and how to prevent it in the future."
+  ]
+},
+
+{
+  "tag": "logging_monitoring",
+  "patterns": [
+    "What is logging and monitoring?",
+    "How to detect an intrusion?",
+    "Why do we need logs?",
+    "Monitoring security events",
+    "Track failed login attempts"
+  ],
+  "responses": [
+    "Logging is the process of recording events happening in your application. Monitoring is the act of reviewing those logs to detect suspicious activities.",
+    "You should log all failed login attempts, password changes, and access to sensitive data to identify potential attacks early.",
+    "A good monitoring system can alert you in real-time if someone is trying to brute-force a user's password or perform an injection attack.",
+    "Logs are essential for forensic analysis after a breach occurs, helping you understand how the attacker got in and what they touched."
+  ]
+},
+
+{
+  "tag": "cloud_security",
+  "patterns": [
+    "What is Cloud Security?",
+    "Is AWS or Azure secure?",
+    "Shared responsibility model",
+    "Securing cloud applications",
+    "Cloud vs On-premise security"
+  ],
+  "responses": [
+    "Cloud Security involves the technologies and policies used to protect data and infrastructure in cloud environments like AWS, Azure, or Google Cloud.",
+    "Understand the 'Shared Responsibility Model': The provider (e.g., AWS) secures the cloud hardware, but YOU are responsible for securing your data and application code.",
+    "Use IAM (Identity and Access Management) roles carefully in the cloud to ensure that services only have the permissions they need (Principle of Least Privilege).",
+    "Misconfigured cloud buckets (like S3) are a major cause of data leaks. Always ensure your cloud storage is not publicly accessible unless intended."
+  ]
+}, 
+
+{
+  "tag": "red_blue_teaming",
+  "patterns": [
+    "What is Red Teaming?",
+    "Blue Team vs Red Team",
+    "Ethical hacking vs Defense",
+    "What is a Purple Team?",
+    "Security team roles"
+  ],
+  "responses": [
+    "Red Teaming is the 'offensive' side; they act as attackers to find vulnerabilities. Blue Teaming is the 'defensive' side; they protect the system and respond to attacks.",
+    "Red Teams use penetration testing and social engineering to test the system's defenses. Blue Teams use logs, firewalls, and monitoring to stop them.",
+    "The goal of both teams is the same: to improve the organization's security through a simulated 'war game'.",
+    "A 'Purple Team' is when both Red and Blue teams work together to share knowledge and fix vulnerabilities more effectively."
+  ]
+},
+
+{
+  "tag": "ssrf_protection",
+  "patterns": [
+    "What is SSRF?",
+    "Server Side Request Forgery",
+    "How to prevent SSRF?",
+    "Explain SSRF vulnerability",
+    "How can an attacker exploit SSRF?"
+  ],
+  "responses": [
+    "SSRF (Server-Side Request Forgery) is a vulnerability where an attacker forces the server to make requests to unintended locations, often internal services.",
+    "Attackers use SSRF to scan internal networks, access metadata services (like AWS metadata), or bypass firewalls that protect internal APIs.",
+    "To prevent SSRF, always use an 'Allow-list' of trusted domains and IP addresses that your server is allowed to communicate with.",
+    "Never allow users to provide full URLs for the server to fetch; instead, validate the destination and use internal IDs or predefined paths.",
+    "Disable unused URL schemas (like file://, gopher://, or ftp://) to limit what the server can request."
+  ]
+},
+
+{
+  "tag": "broken_crypto",
+  "patterns": [
+    "What is Broken Cryptography?",
+    "Sensitive data exposure",
+    "How to encrypt data safely?",
+    "Common crypto mistakes",
+    "Weak encryption algorithms"
+  ],
+  "responses": [
+    "Broken Cryptography occurs when sensitive data is not properly protected, either by using weak algorithms or failing to encrypt data at rest and in transit.",
+    "Never use outdated algorithms like MD5, SHA1, or DES. Instead, use modern standards like AES-256 for encryption and SHA-256 for hashing.",
+    "Ensure all sensitive data is encrypted in transit using TLS (HTTPS). Data at rest in the database should also be encrypted using strong keys.",
+    "Key Management is crucial: never hardcode encryption keys in your code. Store them securely in a Key Management Service (KMS) or a Vault.",
+    "Avoid 'Security by Obscurity'; just because you created a custom encoding doesn't mean it's secure. Stick to proven, industry-standard cryptographic libraries."
+  ]
+},
+
+{
+  "tag": "insecure_deserialization",
+  "patterns": [
+    "What is Insecure Deserialization?",
+    "Risks of deserializing untrusted data",
+    "How to prevent deserialization attacks?",
+    "Explain object injection"
+  ],
+  "responses": [
+    "Insecure Deserialization happens when an application converts malicious data back into an object, allowing an attacker to execute arbitrary code (RCE).",
+    "To prevent this, never deserialize data from untrusted sources without strict validation. Use safe data formats like JSON instead of complex serialized objects.",
+    "If you must use serialization, implement digital signatures or HMACs to ensure the data hasn't been tampered with before it's processed.",
+    "Run the deserialization code in low-privilege environments to limit the impact if an exploit occurs."
+  ]
+},
+
+{
+  "tag": "xxe_vulnerability",
+  "patterns": [
+    "What is XXE?",
+    "XML External Entity attack",
+    "How to prevent XXE?",
+    "Explain XML injection",
+    "Risks of parsing XML"
+  ],
+  "responses": [
+    "XXE (XML External Entity) is an attack against an application that parses XML input, allowing an attacker to view files on the server or interact with internal systems.",
+    "The best way to prevent XXE is to disable DTDs (Document Type Definitions) and external entities in your XML parser settings.",
+    "If you must use XML, use a safe library or switch to a less complex data format like JSON which is not vulnerable to XXE.",
+    "XXE can lead to sensitive data exposure, SSRF, and even Denial of Service (DoS) attacks."
+  ]
+},
+
+{
+  "tag": "security_misconfig",
+  "patterns": [
+    "What is Security Misconfiguration?",
+    "Common server config mistakes",
+    "Default passwords risks",
+    "How to secure server settings?",
+    "Exposed debug info"
+  ],
+  "responses": [
+    "Security Misconfiguration happens when security settings are not properly defined or implemented, such as keeping default passwords or leaving unnecessary features enabled.",
+    "To prevent this, always change default credentials, disable directory listing, and ensure that detailed error messages (Debug Info) are never shown to the user.",
+    "Regularly update and patch your software, frameworks, and servers to close known security holes.",
+    "A secure configuration involves hardening your environment by removing any unused tools or services that could be exploited."
+  ]
+},
+
+{
+  "tag": "idor_vulnerability",
+  "patterns": [
+    "What is IDOR?",
+    "Insecure Direct Object Reference",
+    "How to prevent IDOR?",
+    "Accessing other users data",
+    "Parameter tampering in URL"
+  ],
+  "responses": [
+    "IDOR (Insecure Direct Object Reference) is a vulnerability where a user can access unauthorized data by simply changing a value (like an ID) in a URL or API request.",
+    "To prevent IDOR, never trust user-supplied IDs. Always check if the current user has the permission to access the specific object they are requesting.",
+    "Use non-predictable identifiers like UUIDs instead of sequential numbers (1, 2, 3) to make it harder for attackers to guess other object IDs.",
+    "Always implement robust server-side access control checks for every single request that accesses a database object."
+  ]
+},
+
+{
+  "tag": "vulnerable_dependencies",
+  "patterns": [
+    "What are vulnerable dependencies?",
+    "Using outdated libraries",
+    "How to check for security vulnerabilities in packages?",
+    "Software Composition Analysis",
+    "Risks of using third party libraries"
+  ],
+  "responses": [
+    "Vulnerable Components happen when you use third-party libraries or frameworks that have known security flaws.",
+    "Always keep your dependencies up to date. Use tools like 'npm audit' for Node.js or 'Safety' for Python to scan for vulnerable packages.",
+    "Remove any unused dependencies, features, and files from your project to reduce the attack surface.",
+    "Before adding a new library, check its security track record and how frequently it is patched by the maintainers."
+  ]
+},
+
+{
+  "tag": "insufficient_monitoring",
+  "patterns": [
+    "What is insufficient logging?",
+    "Risks of not monitoring logs",
+    "How to know if my server is under attack?",
+    "Detecting suspicious activities"
+  ],
+  "responses": [
+    "Insufficient Logging and Monitoring is when an application fails to record or alert on suspicious activities, allowing attackers to stay in the system longer.",
+    "Without proper logs, it is impossible to perform a forensic investigation after a breach to know what data was stolen.",
+    "Ensure that all login failures, high-value transactions, and server-side errors are logged with enough detail (timestamp, user ID, IP).",
+    "Set up real-time alerts for critical security events so your team can respond to an incident before it's too late."
+  ]
+},
+
+{
+  "tag": "business_logic_flaws",
+  "patterns": [
+    "What is a business logic vulnerability?",
+    "Logical flaws in code",
+    "How to prevent price manipulation?",
+    "Abusing application workflow"
+  ],
+  "responses": [
+    "Business Logic vulnerabilities are flaws in the design and implementation of an application that allow attackers to manipulate the business rules.",
+    "Common examples include bypassing a payment step, changing item quantities to negative numbers, or reusing a one-time discount code.",
+    "To prevent these, always validate the state and logic on the server-side. Never rely on the frontend to enforce business rules.",
+    "Think like an attacker: ask yourself, 'What happens if I skip this step?' or 'Can I submit this form with invalid data?' during the design phase."
+  ]
+},
+
+{
+  "tag": "hardcoded_secrets",
+  "patterns": [
+    "Is it okay to put API keys in code?",
+    "Hardcoded passwords",
+    "How to store secrets safely?",
+    "Exposing credentials in source code",
+    "GitHub secret leaking"
+  ],
+  "responses": [
+    "Never hardcode secrets like API keys, passwords, or tokens directly in your source code. If you push this code to a public repository, anyone can steal them.",
+    "Use environment variables (.env files) or dedicated Secret Management tools like HashiCorp Vault or AWS Secrets Manager to store sensitive info.",
+    "Always add your config files (like .env) to your .gitignore file to prevent them from being uploaded to GitHub.",
+    "If you accidentally leak a secret, revoke it immediately and generate a new one. Once a secret is in the commit history, it is considered compromised."
+  ]
+},
+
+{
+  "tag": "iot_mobile_security",
+  "patterns": [
+    "Is mobile security different?",
+    "Securing IoT devices",
+    "Android and iOS vulnerabilities",
+    "How to protect mobile apps?",
+    "Embedded systems security"
+  ],
+  "responses": [
+    "Mobile security focuses on risks like insecure data storage on the device, weak biometric auth, and lack of code obfuscation.",
+    "IoT security is critical because many devices lack updates and use hardcoded default passwords, making them easy targets for Botnets.",
+    "For mobile apps, always use 'Certificate Pinning' to prevent Man-in-the-Middle attacks and encrypt local databases like SQLite.",
+    "Security principles remain the same: Validate input, use strong encryption, and follow the Principle of Least Privilege across all platforms."
+  ]
+},
+{
+  "tag": "ai_security",
+  "patterns": [
+    "What is AI Security?",
+    "Prompt Injection attack",
+    "Adversarial machine learning",
+    "How to secure LLMs?",
+    "Data poisoning in AI"
+  ],
+  "responses": [
+    "AI Security involves protecting Machine Learning models from attacks like 'Prompt Injection', where a user tricks the AI into ignoring its safety rules.",
+    "Data Poisoning is another risk, where an attacker manipulates the training data to create a 'backdoor' in the AI model.",
+    "To secure AI applications, never give the AI direct access to sensitive APIs without human-in-the-loop verification.",
+    "Sanitize the inputs sent to LLMs just like you sanitize SQL queries to prevent the model from executing unintended instructions."
+  ]
+},
+
+{
+  "tag": "xxe_vulnerability",
+  "patterns": [
+    "What is XXE?",
+    "XML External Entity attack",
+    "How to prevent XXE?",
+    "Explain XML injection"
+  ],
+  "responses": [
+    "XXE (XML External Entity) occurs when an application parses XML input and allows external entities, potentially exposing server files.",
+    "To prevent XXE, disable DTDs (Document Type Definitions) in your XML parser.",
+    "Switching to JSON instead of XML is a modern way to avoid XXE vulnerabilities entirely."
+  ]
+},
+{
+  "tag": "idor_vulnerability",
+  "patterns": [
+    "What is IDOR?",
+    "Insecure Direct Object Reference",
+    "How to prevent IDOR?",
+    "Accessing other users data"
+  ],
+  "responses": [
+    "IDOR happens when a user can access unauthorized resources by changing an ID in a URL (e.g., changing /user/10 to /user/11).",
+    "Always perform server-side access control checks to ensure the user owns the data they are requesting.",
+    "Using UUIDs (random strings) instead of sequential numbers makes it much harder for attackers to guess IDs."
+  ]
+},
+{
+  "tag": "security_misconfig",
+  "patterns": [
+    "What is Security Misconfiguration?",
+    "Common server config mistakes",
+    "Default passwords risks"
+  ],
+  "responses": [
+    "Security Misconfiguration is leaving default settings, unused features, or debug modes enabled in production.",
+    "Always change default passwords and disable directory listing on your web server.",
+    "Ensure error messages don't leak technical details (like stack traces) to the end user.",
+    "Using UUIDs (random strings) instead of sequential numbers makes it much harder for attackers to guess object IDs."
+  ]
+},
+
+{
+  "tag": "session_management",
+  "patterns": [
+    "What is Session Hijacking?",
+    "How to secure user sessions?",
+    "JWT vs Sessions",
+    "How to prevent session theft?",
+    "ازاي احمي السيشن؟"
+  ],
+  "responses": [
+    "Session Hijacking occurs when an attacker steals a user's session ID. To prevent this, always use HTTPS and set the 'Secure' and 'HttpOnly' flags on cookies.",
+    "Always implement session timeouts. If a user is inactive, the session should automatically expire to protect their account.",
+    "Regenerate the Session ID after every login to prevent Session Fixation attacks."
+  ]
+},
+
+
+{
+  "tag": "security_headers",
+  "patterns": [
+    "What are HTTP Security Headers?",
+    "How to prevent clickjacking?",
+    "Explain CSP header",
+    "What is HSTS?",
+    "يعني ايه security headers؟"
+  ],
+  "responses": [
+    "Security Headers are instructions from the server to the browser to enable security features like CSP (Content Security Policy).",
+    "To prevent 'Clickjacking', use the 'X-Frame-Options: DENY' header to stop your site from being loaded in an iframe.",
+    "HSTS ensures that the browser only communicates with your server over encrypted HTTPS, never plain HTTP."
+  ]
+},
+
+
+{
+  "tag": "data_privacy",
+  "patterns": [
+    "What is PII?",
+    "How to handle user data privacy?",
+    "Privacy by design",
+    "Data minimization",
+    "حماية خصوصية البيانات"
+  ],
+  "responses": [
+    "PII (Personally Identifiable Information) includes data like emails and IDs. Always encrypt this data in your database.",
+    "Apply 'Data Minimization': only collect the information you absolutely need to run your service.",
+    "Privacy by Design means building security and privacy into your project from the very first step, not as an afterthought."
+  ]
+},
+
+{
+  "tag": "insecure_file_upload",
+  "patterns": [
+    "What is Insecure File Upload?",
+    "How to secure file uploads?",
+    "Restricting file extensions",
+    "Malicious file upload protection"
+  ],
+  "responses": [
+    "Insecure File Upload occurs when an application allows users to upload malicious files (like scripts) to the server.",
+    "To prevent this, always validate file extensions using an 'Allow-list' (e.g., .jpg, .png only) and never rely on the MIME type provided by the user.",
+    "Store uploaded files in a separate directory outside the web root and rename them to random strings to prevent execution.",
+    "Use a virus scanner to check every uploaded file before it is permanently stored on your server."
+  ]
+},
+
+{
+  "tag": "ssti_vulnerability",
+  "patterns": [
+    "What is SSTI?",
+    "Server Side Template Injection",
+    "How to prevent template injection?",
+    "Jinja2 or Handlebars security"
+  ],
+  "responses": [
+    "SSTI occurs when user input is unsafely embedded into a web template, allowing attackers to execute code on the server.",
+    "To prevent SSTI, never pass user-provided data directly into template strings. Use the template engine's built-in filtering and escaping.",
+    "Treat template code as executable code; always use a 'Sandbox' environment if you must allow dynamic templates."
+  ]
+},
+
+{
+  "tag": "race_conditions",
+  "patterns": [
+    "What is a Race Condition in web?",
+    "Concurrency attacks",
+    "How to prevent double spending?",
+    "Security in multi-threaded apps"
+  ],
+  "responses": [
+    "A Race Condition happens when multiple requests try to access and modify the same data at the exact same time (e.g., spending the same balance twice).",
+    "To prevent this, use 'Database Locking' or 'Atomic Operations' to ensure that only one process can modify a record at a time.",
+    "Always validate the state of the data (like checking if a balance is sufficient) immediately before performing an update."
+  ]
+},
+
+{
+  "tag": "secure_coding_checklist",
+  "patterns": [
+    "Give me a secure coding checklist",
+    "How to review my code for security?",
+    "Best practices summary",
+    "ملخص حماية الكود"
+  ],
+  "responses": [
+    "Here is your Secure Coding Checklist: 1. Validate all inputs. 2. Use Parameterized Queries for DB. 3. Encrypt sensitive data. 4. Use Secure Cookies (HttpOnly/Secure). 5. Keep dependencies updated. 6. Never hardcode secrets.",
+    "Before deploying, ensure: You have no hardcoded API keys, error messages don't leak server info, and you use strong hashing (like BCrypt) for passwords.",
+    "Check these 3 things: Authentication (Who are you?), Authorization (What can you do?), and Auditing (What did you do?)."
+  ]
+},
+
+{
+  "tag": "security_tools",
+  "patterns": [
+    "What tools should I use for security?",
+    "Best scanners for vulnerabilities",
+    "Tools for SAST and DAST",
+    "أدوات فحص الكود"
+  ],
+  "responses": [
+    "For Static Analysis (SAST), use tools like SonarQube or Snyk. For Dynamic Analysis (DAST), OWASP ZAP and Burp Suite are industry standards.",
+    "To check for vulnerable dependencies, use 'npm audit' for Node.js, 'Safety' for Python, or GitHub's Dependabot.",
+    "If you want to scan your web app for common flaws, OWASP ZAP is a great free and open-source tool to start with."
+  ]
+},
+
+{
+  "tag": "clickjacking_protection",
+  "patterns": [
+    "What is Clickjacking?",
+    "UI Redressing attack",
+    "How to prevent clickjacking?",
+    "X-Frame-Options explanation"
+  ],
+  "responses": [
+    "Clickjacking is an attack that tricks a user into clicking something different from what they perceive, usually by using invisible iframes.",
+    "The best defense is using the 'X-Frame-Options' HTTP header set to 'DENY' or 'SAMEORIGIN'.",
+    "Modern browsers also support the 'Content-Security-Policy' (CSP) with 'frame-ancestors' directive to prevent your site from being embedded elsewhere."
+  ]
+},
+
+{
+  "tag": "broken_access_control",
+  "patterns": [
+    "What is Broken Access Control?",
+    "Privilege Escalation",
+    "How to prevent unauthorized access?",
+    "Horizontal vs Vertical access control"
+  ],
+  "responses": [
+    "Broken Access Control is when users can access resources or perform actions outside of their intended permissions.",
+    "Horizontal escalation is accessing data of users at the same level, while Vertical escalation is a regular user gaining Admin rights.",
+    "To prevent this, deny access by default and check permissions on the server-side for every single request."
+  ]
+},
+
+{
+  "tag": "ssrf_cloud_metadata",
+  "patterns": [
+    "SSRF and Cloud security",
+    "Stealing AWS metadata",
+    "169.254.169.254 meaning",
+    "How to protect cloud instances from SSRF?"
+  ],
+  "responses": [
+    "In cloud environments, SSRF can be used to query the Metadata service (169.254.169.254) to steal temporary security credentials.",
+    "Attackers can use these credentials to gain full access to your S3 buckets or other cloud resources.",
+    "Always use IMDSv2 (for AWS) which requires a session token, making it much harder to exploit via SSRF."
+  ]
+},
+
+{
+  "tag": "bola_api_security",
+  "patterns": [
+    "What is BOLA in API?",
+    "Broken Object Level Authorization",
+    "API IDOR prevention",
+    "Securing API endpoints"
+  ],
+  "responses": [
+    "BOLA (Broken Object Level Authorization) is the most common API threat. It's when an API endpoint doesn't check if the user has access to the requested ID.",
+    "Even if you use random IDs like UUIDs, you MUST still verify that the user 'owns' the resource they are trying to access.",
+    "Implement a centralized authorization mechanism to validate access for every API call."
+  ]
+},
+
+{
+  "tag": "directory_traversal",
+  "patterns": [
+    "What is Path Traversal?",
+    "Dot-dot-slash attack",
+    "How to prevent directory traversal?",
+    "Accessing system files via web"
+  ],
+  "responses": [
+    "Directory Traversal allows attackers to read arbitrary files on the server by using '../' sequences in file paths.",
+    "To prevent this, never pass user input directly to file APIs. Use a hardcoded list of allowed files or sanitize the input to remove dots and slashes.",
+    "Run your web server with the lowest possible privileges so it can't access sensitive system directories."
+  ]
+},
+
+{
+  "tag": "open_redirection",
+  "patterns": [
+    "What is Open Redirect?",
+    "Unvalidated redirects and forwards",
+    "Why is redirecting dangerous?",
+    "How to secure redirects?"
+  ],
+  "responses": [
+    "Open Redirection occurs when an application uses a user-supplied URL to redirect them without validation (e.g., ?redirect=http://evil.com).",
+    "Attackers use this to make their phishing links look trustworthy because they start with your legitimate domain.",
+    "Avoid using user input for redirects. If you must, use an allow-list of trusted local URLs or internal IDs."
+  ]
+},
+
+{
+  "tag": "mass_assignment",
+  "patterns": [
+    "What is Mass Assignment?",
+    "Hidden property injection",
+    "How to prevent auto-binding vulnerabilities?",
+    "Insecure parameter binding"
+  ],
+  "responses": [
+    "Mass Assignment happens when a framework automatically binds user input to a database model without filtering the fields.",
+    "An attacker can exploit this to change fields they shouldn't touch, like 'role', 'balance', or 'admin_status'.",
+    "Always use 'Data Transfer Objects' (DTOs) or explicit allow-lists to define exactly which fields the user is allowed to update."
+  ]
+},
+
+{
+  "tag": "rate_limiting_logic",
+  "patterns": [
+    "How to prevent Brute Force?",
+    "What is Rate Limiting?",
+    "Preventing DoS attacks on login",
+    "Why is my API slow?"
+  ],
+  "responses": [
+    "Rate Limiting restricts the number of requests a user can make in a given time, preventing Brute Force and Denial of Service (DoS) attacks.",
+    "Implement 'Account Lockout' or increasing delays after multiple failed login attempts to stop automated password guessing.",
+    "Use tools like Redis or middleware in Express/Flask to track and limit requests per IP address."
+  ]
+},
+
+{
+  "tag": "xxe_advanced_oob",
+  "patterns": [
+    "What is Out-of-Band XXE?",
+    "Advanced XXE attacks",
+    "Blind XXE exploitation",
+    "Exfiltrating data via XXE"
+  ],
+  "responses": [
+    "Out-of-Band (OOB) XXE is used when the application doesn't return the XML response. The attacker tricks the server into sending data to their own external server.",
+    "This is often done using 'External Parameter Entities' to wrap system files inside a request to the attacker's URL.",
+    "To prevent all forms of XXE, the golden rule is: Disable DTDs and External Entities in your XML parsing library configuration."
+  ]
+},
+
+{
+  "tag": "parameter_pollution",
+  "patterns": [
+    "What is HTTP Parameter Pollution?",
+    "HPP vulnerability",
+    "Bypassing WAF with HPP",
+    "Multiple parameters with same name"
+  ],
+  "responses": [
+    "HPP occurs when an application receives multiple parameters with the same name and processes them inconsistently, which can bypass security filters.",
+    "For example, a WAF might check the first 'id', while the application logic uses the second one.",
+    "Always validate that your application handles repeated parameters predictably and use frameworks that let you access parameters strictly by name."
+  ]
+},
+
+{
+  "tag": "ssrf_pdf_generators",
+  "patterns": [
+    "SSRF in PDF generators",
+    "HTML to PDF vulnerability",
+    "How to secure PDF conversion?",
+    "Using iframe in PDF to steal data"
+  ],
+  "responses": [
+    "Many PDF generators render HTML/JS. An attacker can use tags like <iframe> or <script> to make the server fetch internal files or hit internal APIs.",
+    "If you use libraries like wkhtmltopdf, ensure that access to local files (file://) and external network requests is disabled.",
+    "Always sanitize the HTML input before passing it to a PDF rendering engine to prevent unauthorized server-side requests."
+  ]
+},
+
+{
+  "tag": "prototype_pollution",
+  "patterns": [
+    "What is Prototype Pollution?",
+    "JavaScript object security",
+    "How to prevent __proto__ attacks?",
+    "Polluting the global object"
+  ],
+  "responses": [
+    "Prototype Pollution is a JavaScript vulnerability where an attacker can add properties to global object prototypes, leading to RCE or Logic bypass.",
+    "It often happens during 'Deep Merge' or 'Property Assignment' operations on JSON data.",
+    "Use 'Map' instead of plain objects for user-controlled keys, or use 'Object.freeze()' to protect your prototypes."
+  ]
+},
+
+{
+  "tag": "graphql_security",
+  "patterns": [
+    "Is GraphQL secure?",
+    "GraphQL introspection vulnerability",
+    "How to secure GraphQL API?",
+    "GraphQL query depth limiting"
+  ],
+  "responses": [
+    "GraphQL often has 'Introspection' enabled by default, which lets attackers see the entire schema, including hidden fields and queries.",
+    "Attackers can also perform 'Query Depth' attacks, sending deeply nested queries that crash the server (DoS).",
+    "Disable introspection in production and implement 'Query Cost Analysis' or 'Depth Limiting' to protect your GraphQL server."
+  ]
+},
+
+{
+  "tag": "host_header_injection",
+  "patterns": [
+    "What is Host Header Injection?",
+    "Password reset poisoning",
+    "Dangerous HTTP Host headers",
+    "How to prevent host header attacks?"
+  ],
+  "responses": [
+    "Host Header Injection happens when a server uses the 'Host' header to generate absolute URLs (like in emails) without validation.",
+    "An attacker can change the Host to 'evil.com', making the application send a password reset link that points to the attacker's server.",
+    "Always use a hardcoded domain name for generating URLs in emails and validate the Host header against a trusted allow-list."
+  ]
+},
+
+{
+  "tag": "subdomain_takeover",
+  "patterns": [
+    "What is Subdomain Takeover?",
+    "Dangling DNS records",
+    "How to prevent DNS takeover?",
+    "Risks of unused subdomains"
+  ],
+  "responses": [
+    "Subdomain Takeover occurs when a DNS record points to a service that has been deleted. An attacker can claim that service and host their own content on your subdomain.",
+    "This allows attackers to bypass CSP, steal session cookies, and launch very convincing phishing attacks.",
+    "Regularly audit your DNS records and remove any that point to services you no longer use (Dangling DNS)."
+  ]
+},
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "Bye",
+        "See you later",
+        "Goodbye",
+        "Exit",
+        "Quit"
+      ],
+      "responses": [
+        "Goodbye! Keep your code safe.",
+        "See you later! Happy secure coding.",
+        "Bye! Don't forget to validate your inputs!"
+      ]
+    }
+  ]
+}

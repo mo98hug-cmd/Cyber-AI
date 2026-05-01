@@ -1,0 +1,27 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": ["Hi", "Hello", "Hey", "أهلا", "مرحبا", "سلام"],
+      "responses": [
+        "Hello! 🛡️ I am Cyber AI, your security assistant. How can I help you today? 💻",
+        "Hi there! 🔒 Cyber AI is ready to help you secure your code. What's on your mind? 🔍",
+        "Greetings! 🤖 I'm Cyber AI. Let's explore some security topics! 🚀"
+      ]
+    },
+    {
+      "tag": "knowledge_intro",
+      "patterns": ["ماذا تعرف", "help", "topics", "knowledge", "مساعدة"],
+      "responses": [
+        "I am specialized in: \n1. SQL Injection 💉\n2. XSS Protection 🛡️\n3. Password Hashing 🔑\n4. API Security 🌐\nWhat would you like to learn about?"
+      ]
+    },
+    {
+      "tag": "sql_injection",
+      "patterns": ["SQL injection", "sql info", "what is sql injection", "شرح sql"],
+      "responses": [
+        "SQL Injection 💉 is a vulnerability that allows attackers to interfere with database queries. 🗄️ It is very dangerous for data safety!"
+      ]
+    }
+  ]
+}

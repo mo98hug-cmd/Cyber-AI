@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber AI 🛡️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="chat-card">
+        <div class="chat-header">
+            <span>🛡️ CYBER AI</span>
+            <button class="action-btn" id="theme-toggle" onclick="toggleTheme()" title="تبديل الوضع">🌙</button>
+        </div>
+        
+        <div class="chat-messages" id="messages">
+            <!-- الصفحة الترحيبية والـ Knowledge -->
+            <div class="bot-bubble">
+                Welcome! I am <b>Cyber AI</b>. 🤖<br><br>
+                أنا خبيرك الأمني الخاص. يمكنني مساعدتك في:<br>
+                • 💉 <b>SQL Injection</b><br>
+                • 🛡️ <b>XSS Protection</b><br>
+                • 🔑 <b>Encryption</b>
+            </div>
+        </div>
+
+        <!-- شريط الاقتراحات -->
+        <div class="suggestion-bar">
+            <button class="suggest-item" onclick="fastSend('What is SQLi?')">SQL Injection 💉</button>
+            <button class="suggest-item" onclick="fastSend('Help with XSS')">XSS Protection 🛡️</button>
+        </div>
+
+        <div class="chat-input-area">
+            <label class="action-btn" title="إرفاق ملف">
+                📎<input type="file" id="file" style="display:none" onchange="handleFile()">
+            </label>
+            <button class="action-btn" id="mic-btn" onclick="startDictation()" title="تحدث الآن">🎤</button>
+            <input type="text" id="userInput" class="input-box" placeholder="اسأل Cyber AI...">
+            <button class="action-btn" onclick="send()" title="إرسال">🚀</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+.light-mode { --bg-main: #f0f2f5; --card-bg: #ffffff; --text-main: #1c1c1e; --border: rgba(0,0,0,0.08); --input-bg: #f2f2f7; }
+.dark-mode { --bg-main: #0a0a0c; --card-bg: #1c1c1e; --text-main: #f5f5f7; --border: rgba(255,255,255,0.08); --input-bg: #2c2c2e; }
+
+:root { --accent-blue: #007aff; --font-family: 'Space Grotesk', sans-serif; }
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-family); transition: 0.3s; }
+body { background-color: var(--bg-main); color: var(--text-main); height: 100vh; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+
+.theme-switch { position: fixed; top: 20px; right: 20px; width: 45px; height: 45px; border-radius: 50%; border: 1px solid var(--border); background: var(--card-bg); cursor: pointer; z-index: 100; font-size: 1.2rem; }
+
+.welcome-container { text-align: center; width: 100%; transition: 0.5s; }
+.main-robot { width: 250px; height: 250px; object-fit: cover; border-radius: 50%; border: 4px solid var(--accent-blue); animation: float 4s infinite ease-in-out; box-shadow: 0 0 30px rgba(0,122,255,0.3); }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+
+.robot-visual { position: relative; display: inline-block; }
+.scan-line { position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: var(--accent-blue); animation: scan 3s infinite linear; box-shadow: 0 0 15px var(--accent-blue); z-index: 2; }
+@keyframes scan { 0% { top: 0%; } 100% { top: 100%; } }
+
+.welcome-title { font-size: 3rem; margin-top: 15px; }
+.accent { color: var(--accent-blue); }
+.init-btn { padding: 12px 35px; background: var(--accent-blue); color: white; border: none; border-radius: 25px; cursor: pointer; margin-top: 20px; font-weight: 600; box-shadow: 0 5px 15px rgba(0,122,255,0.3); }
+
+.main-app-container { width: 95%; max-width: 900px; height: 85vh; background: var(--card-bg); border-radius: 20px; display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
+.app-header { padding: 15px 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+.ai-tag { font-size: 0.65rem; background: var(--accent-blue); color: white; padding: 2px 8px; border-radius: 10px; vertical-align: middle; }
+
+.chat-viewport { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
+.msg { padding: 12px 18px; border-radius: 18px; max-width: 80%; font-size: 0.95rem; line-height: 1.4; }
+.bot-msg { background: var(--input-bg); align-self: flex-start; border-bottom-left-radius: 4px; }
+.user-msg { background: var(--accent-blue); color: white; align-self: flex-end; border-bottom-right-radius: 4px; }
+
+.input-section { padding: 15px 20px; border-top: 1px solid var(--border); }
+.input-bar-wrapper { position: relative; display: flex; align-items: center; }
+input { width: 100%; padding: 14px 100px 14px 15px; background: var(--input-bg); border-radius: 12px; border: 1px solid transparent; color: var(--text-main); outline: none; }
+input:focus { border-color: var(--accent-blue); }
+
+.mic-btn { position: absolute; right: 50px; background: none; border: none; cursor: pointer; color: var(--text-main); opacity: 0.6; }
+.mic-btn.recording { color: #ff3b30; opacity: 1; animation: pulse 1s infinite; }
+@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.2); } 100% { transform: scale(1); } }
+
+.send-action-btn { position: absolute; right: 5px; width: 40px; height: 40px; background: var(--accent-blue); border-radius: 10px; border: none; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.menu-btn { background: transparent; border: 1px solid var(--border); padding: 5px 12px; border-radius: 8px; font-size: 0.8rem; cursor: pointer; color: var(--text-main); }
